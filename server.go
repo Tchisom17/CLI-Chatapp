@@ -47,8 +47,13 @@ func main(){
 			clients = append(clients, currentClient)
 
 			for {
-				//wait fo message to get to the server
+				//wait for message to get to the server
 				msg, errOnMsg := buf.ReadString('\n')
+				if msg == "" {
+					continue
+				}else if msg == " "{
+					continue
+				}
 				if errOnMsg != nil {
 					log("Client " + currentClient.Nickname + " disconnected")
 					break
